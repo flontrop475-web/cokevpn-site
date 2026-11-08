@@ -1,7 +1,7 @@
 'use strict';
 
 // Ссылка на Telegram-бот, который выдаёт ключи. Замените на свою.
-const TELEGRAM_URL = 'https://t.me/your_cokevpn_bot';
+const TELEGRAM_URL = 'https://t.me/coke_vpnbot';
 
 // data-telegram="buy_1m" открывает бота сразу на нужном тарифе
 document.querySelectorAll('[data-telegram]').forEach(a => {
