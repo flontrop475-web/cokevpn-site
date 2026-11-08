@@ -10,9 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="vendor/liquidGL.js" defer></script>
-  <script src="main.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=202611082004">
+  <script src="vendor/liquidGL.js?v=202611082004" defer></script>
+  <script src="main.js?v=202611082004" defer></script>
 </head>
 <body>
 
@@ -124,11 +124,11 @@
         </div>
 
         <div class="tier-switch" role="radiogroup" aria-label="Тариф">
-          <span class="tier-slider" aria-hidden="true"></span>
-          <button type="button" class="tier on" data-tier="pro" role="radio" aria-checked="true">
+          <span class="tier-slider" aria-hidden="true" style="position:absolute"></span>
+          <button type="button" class="tier on" data-tier="pro" style="grid-column:1;grid-row:1" role="radio" aria-checked="true">
             <strong>PRO</strong><small>VPN без белых списков</small>
           </button>
-          <button type="button" class="tier" data-tier="plus" role="radio" aria-checked="false">
+          <button type="button" class="tier" data-tier="plus" style="grid-column:2;grid-row:1" role="radio" aria-checked="false">
             <strong>PRO+ <em>белый список</em></strong><small>Всё из PRO + белый список РФ</small>
           </button>
         </div>
