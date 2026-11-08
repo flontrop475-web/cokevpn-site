@@ -124,12 +124,17 @@
         </div>
 
         <div class="tier-switch" role="radiogroup" aria-label="Тариф">
+          <span class="tier-slider" aria-hidden="true"></span>
           <button type="button" class="tier on" data-tier="pro" role="radio" aria-checked="true">
-            <strong>PRO</strong><small>VPN на всех устройствах</small>
+            <strong>PRO</strong><small>VPN без белых списков</small>
           </button>
           <button type="button" class="tier" data-tier="plus" role="radio" aria-checked="false">
-            <strong>PRO+ <em>РФ напрямую</em></strong><small>+ Госуслуги, банки, Яндекс без VPN</small>
+            <strong>PRO+ <em>белый список</em></strong><small>Всё из PRO + белый список РФ</small>
           </button>
+        </div>
+        <div class="tier-note" aria-live="polite">
+          <p class="note-pro">Весь трафик идёт через VPN — и зарубежные, и российские сайты. Без белых списков.</p>
+          <p class="note-plus"><b>Всё, что в PRO</b>, плюс белый список РФ: Госуслуги, банки, Яндекс, VK и маркетплейсы открываются напрямую, без VPN.</p>
         </div>
 
         <div class="plans-wrap">

@@ -4,16 +4,39 @@
 const TELEGRAM_URL = 'https://t.me/coke_vpnbot';
 
 // Переключатель тарифа PRO / PRO+ в блоке цен
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/** Плавно «докручивает» число от текущего значения к новому. */
+function animateNumber(el, to) {
+  const from = parseInt(el.textContent.replace(/\D/g, ''), 10);
+  if (reduceMotion || !Number.isFinite(from) || from === to) { el.textContent = String(to); return; }
+  const start = performance.now();
+  const duration = 650;
+  cancelAnimationFrame(el._raf);
+  const step = (t) => {
+    const p = Math.min(1, (t - start) / duration);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = String(Math.round(from + (to - from) * eased));
+    if (p < 1) el._raf = requestAnimationFrame(step);
+  };
+  el._raf = requestAnimationFrame(step);
+}
+
 function setTier(tier) {
   const plus = tier === 'plus';
+  if (document.body.classList.contains('tier-plus') === plus) return;
   document.body.classList.toggle('tier-plus', plus);
+  const sw = document.querySelector('.tier-switch');
+  if (sw) { sw.classList.remove('bump'); void sw.offsetWidth; sw.classList.add('bump'); }
   document.querySelectorAll('.tier').forEach((b) => {
     const on = b.dataset.tier === tier;
     b.classList.toggle('on', on);
     b.setAttribute('aria-checked', String(on));
   });
   document.querySelectorAll('[data-pro][data-plus]').forEach((el) => {
-    el.textContent = plus ? el.dataset.plus : el.dataset.pro;
+    const value = plus ? el.dataset.plus : el.dataset.pro;
+    if (/^\d+$/.test(value)) animateNumber(el, Number(value));
+    else el.textContent = value;
   });
   document.querySelectorAll('[data-pro-start]').forEach((a) => {
     a.dataset.telegram = plus ? a.dataset.plusStart : a.dataset.proStart;
@@ -72,10 +95,16 @@ window.addEventListener('load', async () => {
   ];
   const resolution = safeResolution(document.body);
 
+  let registered = false;
   for (const g of groups) {
     if (!document.querySelector(g.target)) continue;
     try {
       liquidGL({ ...glass, snapshot: 'body', resolution, ...g });
+      // цифра за карточками цен меняется при переключении PRO / PRO+ — стекло должно видеть новую
+      if (!registered && typeof liquidGL.registerDynamic === 'function') {
+        liquidGL.registerDynamic('.price-giant');
+        registered = true;
+      }
     } catch (err) {
       console.warn('liquidGL недоступен, включаю запасной вариант', err);
       useFallback();

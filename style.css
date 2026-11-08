@@ -128,22 +128,47 @@ h1 { font-size: clamp(56px, 8vw, 124px); line-height: .92; }
 .plan .btn-dark, .plan .btn-line { margin-top: auto; width: 100%; }
 
 /* Переключатель PRO / PRO+ */
-.tier-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; margin: -24px 0 36px; max-width: 620px;
-  border-radius: 22px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); }
+.tier-switch { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; margin: -24px 0 18px; max-width: 620px;
+  border-radius: 22px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); isolation: isolate; }
+/* «таблетка», которая переезжает под выбранный тариф */
+.tier-slider { position: absolute; z-index: -1; top: 6px; bottom: 6px; left: 6px; width: calc(50% - 9px); border-radius: 16px;
+  background: rgba(255, 255, 255, .13); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28);
+  transition: transform .5s cubic-bezier(.7, 0, .25, 1.2), background .35s .15s, box-shadow .35s .15s; }
+.tier-slider::after { content: ""; position: absolute; inset: 0; border-radius: inherit; opacity: 0; transition: opacity .45s;
+  background: radial-gradient(120% 140% at 30% 0%, rgba(255, 255, 255, .35), transparent 55%); }
+body.tier-plus .tier-slider { transform: translateX(calc(100% + 6px)); background: linear-gradient(135deg, #ff3443, #b30c1c);
+  box-shadow: 0 14px 34px -10px rgba(255, 34, 51, .95), inset 0 1px 0 rgba(255, 255, 255, .45); }
+body.tier-plus .tier-slider::after { opacity: 1; }
+.tier-switch.bump .tier-slider { animation: slider-bump .55s ease; }
+@keyframes slider-bump { 40% { filter: brightness(1.35); } }
 .tier { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; padding: 14px 18px; border-radius: 16px; border: 0;
-  background: transparent; color: var(--ink); text-align: left; cursor: pointer; font: inherit; transition: background .25s, box-shadow .25s; }
+  background: transparent; color: var(--ink); text-align: left; cursor: pointer; font: inherit; transition: transform .2s; }
+.tier:active { transform: scale(.97); }
 .tier strong { font: 800 18px/1.1 var(--display); letter-spacing: -.03em; display: flex; align-items: center; gap: 8px; }
-.tier strong em { font: 700 10px/1 var(--text); font-style: normal; letter-spacing: .02em; color: #fff; background: var(--red); padding: 4px 7px; border-radius: 99px; }
-.tier small { font-size: 13px; color: var(--dim); }
-.tier:hover { background: rgba(255, 255, 255, .06); }
-.tier.on { background: rgba(255, 255, 255, .12); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25); }
-.tier[data-tier="plus"].on { background: linear-gradient(135deg, #ff3443, #b30c1c); box-shadow: 0 12px 30px -12px rgba(255, 34, 51, .9); }
-.tier[data-tier="plus"].on small { color: #ffe1e4; }
-.tier[data-tier="plus"].on strong em { background: #000; }
+.tier strong em { font: 700 10px/1 var(--text); font-style: normal; letter-spacing: .02em; color: #fff; background: var(--red); padding: 4px 7px; border-radius: 99px; transition: background .4s; }
+.tier small { font-size: 13px; color: var(--dim); transition: color .4s; }
+.tier.on small { color: #e9e5e6; }
+body.tier-plus .tier[data-tier="plus"] small { color: #ffe1e4; }
+body.tier-plus .tier[data-tier="plus"] strong em { background: #000; }
+
+/* описание тарифа: плавная смена */
+.tier-note { position: relative; max-width: 620px; min-height: 48px; margin-bottom: 30px; }
+.tier-note p { position: absolute; inset: 0; margin: 0; color: #cfcacb; font-size: 15px; transition: opacity .45s, transform .45s; }
+.tier-note b { color: #fff; }
+.tier-note .note-plus { opacity: 0; transform: translateY(10px); }
+body.tier-plus .tier-note .note-pro { opacity: 0; transform: translateY(-10px); }
+body.tier-plus .tier-note .note-plus { opacity: 1; transform: none; }
+
+/* красное свечение за карточками при PRO+ */
+.plans-wrap::before { content: ""; position: absolute; inset: -40px -20px; z-index: -1; pointer-events: none; opacity: 0; transform: scale(.9);
+  background: radial-gradient(60% 55% at 50% 50%, rgba(255, 34, 51, .45), transparent 70%); transition: opacity .7s, transform .9s cubic-bezier(.2, .8, .2, 1); }
+body.tier-plus .plans-wrap::before { opacity: 1; transform: none; }
+.price-giant { transition: color .5s, text-shadow .5s; }
+body.tier-plus .price-giant { text-shadow: 0 0 80px rgba(255, 34, 51, .55); }
+
 .tier-name { color: inherit; }
-.plan-feats .plus-only { display: none; }
-body.tier-plus .plan-feats .plus-only { display: flex; }
-body.tier-plus .plan-feats .plus-only { color: #fff; font-weight: 600; }
+.plan-feats .plus-only { max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0; transition: max-width .6s, opacity .4s; }
+body.tier-plus .plan-feats .plus-only { max-width: 320px; opacity: 1; color: #fff; font-weight: 600; }
 
 /* FAQ */
 .faq-list details { border-top: 1px solid var(--line); }
@@ -199,6 +224,8 @@ body.tier-plus .plan-feats .plus-only { color: #fff; font-weight: 600; }
   .tier strong { font-size: 16px; }
   .tier small { font-size: 11px; }
   .tier-switch { margin-top: -12px; }
+  .tier-note { min-height: 70px; }
+  .tier-note p { font-size: 14px; }
   .plan-feats { justify-content: flex-start; }
   .foot-copy { display: none; }
 }
