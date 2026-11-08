@@ -3,6 +3,27 @@
 // Ссылка на Telegram-бот, который выдаёт ключи. Замените на свою.
 const TELEGRAM_URL = 'https://t.me/coke_vpnbot';
 
+// Переключатель тарифа PRO / PRO+ в блоке цен
+function setTier(tier) {
+  const plus = tier === 'plus';
+  document.body.classList.toggle('tier-plus', plus);
+  document.querySelectorAll('.tier').forEach((b) => {
+    const on = b.dataset.tier === tier;
+    b.classList.toggle('on', on);
+    b.setAttribute('aria-checked', String(on));
+  });
+  document.querySelectorAll('[data-pro][data-plus]').forEach((el) => {
+    el.textContent = plus ? el.dataset.plus : el.dataset.pro;
+  });
+  document.querySelectorAll('[data-pro-start]').forEach((a) => {
+    a.dataset.telegram = plus ? a.dataset.plusStart : a.dataset.proStart;
+    a.href = `${TELEGRAM_URL}?start=${a.dataset.telegram}`;
+  });
+  document.querySelectorAll('.tier-name').forEach((el) => { el.textContent = plus ? 'PRO+' : 'PRO'; });
+}
+document.querySelectorAll('.tier').forEach((b) => b.addEventListener('click', () => setTier(b.dataset.tier)));
+if (location.hash === '#pro-plus') setTier('plus');
+
 // data-telegram="buy_1m" открывает бота сразу на нужном тарифе
 document.querySelectorAll('[data-telegram]').forEach(a => {
   const start = a.dataset.telegram;

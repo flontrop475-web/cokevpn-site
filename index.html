@@ -118,35 +118,45 @@
         <div class="sec-head sec-head-row">
           <div>
             <span class="label">Цена</span>
-            <h2>149 ₽ в месяц</h2>
+            <h2>от <span data-pro="149" data-plus="199">149</span> ₽ в месяц</h2>
           </div>
           <p>Первые 3 дня бесплатно. Оплата звёздами Telegram прямо в боте.</p>
         </div>
+
+        <div class="tier-switch" role="radiogroup" aria-label="Тариф">
+          <button type="button" class="tier on" data-tier="pro" role="radio" aria-checked="true">
+            <strong>PRO</strong><small>VPN на всех устройствах</small>
+          </button>
+          <button type="button" class="tier" data-tier="plus" role="radio" aria-checked="false">
+            <strong>PRO+ <em>РФ напрямую</em></strong><small>+ Госуслуги, банки, Яндекс без VPN</small>
+          </button>
+        </div>
+
         <div class="plans-wrap">
-          <div class="price-giant" aria-hidden="true">149</div>
+          <div class="price-giant" aria-hidden="true" data-pro="149" data-plus="199">149</div>
         <div class="plans">
           <article class="plan lens lens-tilt">
             <div data-liquid-ignore class="lens-c plan-in">
               <div class="plan-top"><h3>1 месяц</h3></div>
-              <div class="plan-val">149<small> ₽</small></div>
-              <div class="plan-per">149 ₽ в месяц</div>
-              <a class="btn-line" href="#" data-telegram="buy_1m"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /> <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></svg><span>Купить</span></a>
+              <div class="plan-val"><span data-pro="149" data-plus="199">149</span><small> ₽</small></div>
+              <div class="plan-per" data-pro="149 ₽ в месяц" data-plus="199 ₽ в месяц">149 ₽ в месяц</div>
+              <a class="btn-line" href="#" data-telegram="buy_1m" data-pro-start="buy_1m" data-plus-start="buy_p1m"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /> <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></svg><span>Купить <b class="tier-name">PRO</b></span></a>
             </div>
           </article>
           <article class="plan lens lens-tilt plan-hot">
             <div data-liquid-ignore class="lens-c plan-in">
-              <div class="plan-top"><h3>3 месяца</h3><span class="chip chip-dark">−11%</span></div>
-              <div class="plan-val">399<small> ₽</small></div>
-              <div class="plan-per">133 ₽ в месяц</div>
-              <a class="btn-dark" href="#" data-telegram="buy_3m"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /> <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></svg><span>Купить</span></a>
+              <div class="plan-top"><h3>3 месяца</h3><span class="chip chip-dark" data-pro="−11%" data-plus="−11%">−11%</span></div>
+              <div class="plan-val"><span data-pro="399" data-plus="529">399</span><small> ₽</small></div>
+              <div class="plan-per" data-pro="133 ₽ в месяц" data-plus="176 ₽ в месяц">133 ₽ в месяц</div>
+              <a class="btn-dark" href="#" data-telegram="buy_3m" data-pro-start="buy_3m" data-plus-start="buy_p3m"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /> <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></svg><span>Купить <b class="tier-name">PRO</b></span></a>
             </div>
           </article>
           <article class="plan lens lens-tilt">
             <div data-liquid-ignore class="lens-c plan-in">
-              <div class="plan-top"><h3>12 месяцев</h3><span class="chip">−28%</span></div>
-              <div class="plan-val">1290<small> ₽</small></div>
-              <div class="plan-per">108 ₽ в месяц</div>
-              <a class="btn-line" href="#" data-telegram="buy_12m"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /> <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></svg><span>Купить</span></a>
+              <div class="plan-top"><h3>12 месяцев</h3><span class="chip" data-pro="−28%" data-plus="−29%">−28%</span></div>
+              <div class="plan-val"><span data-pro="1290" data-plus="1690">1290</span><small> ₽</small></div>
+              <div class="plan-per" data-pro="108 ₽ в месяц" data-plus="141 ₽ в месяц">108 ₽ в месяц</div>
+              <a class="btn-line" href="#" data-telegram="buy_12m" data-pro-start="buy_12m" data-plus-start="buy_p12m"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" /> <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" /></svg><span>Купить <b class="tier-name">PRO</b></span></a>
             </div>
           </article>
         </div>
@@ -155,6 +165,7 @@
           <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>До 3 устройств</li>
           <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Серверы в Европе</li>
           <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Без рекламы</li>
+          <li class="plus-only"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Российские сайты напрямую</li>
           <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Ключ приходит сразу</li>
         </ul>
       </div>
@@ -171,6 +182,7 @@
           <details><summary>Есть пробный период?<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="M12 5v14" /></svg></summary><p>Да, 3 дня бесплатно. Карта не нужна: ключ сразу выдаёт бот.</p></details>
           <details><summary>Как оплатить?<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="M12 5v14" /></svg></summary><p>Звёздами Telegram прямо в боте. Звёзды покупаются в самом Telegram за пару нажатий.</p></details>
           <details><summary>Почему работает, если другие VPN нет?<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="M12 5v14" /></svg></summary><p>Протокол VLESS Reality. Для провайдера ваш трафик выглядит как обычное посещение крупного сайта.</p></details>
+          <details><summary>Чем PRO+ отличается от PRO?<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="M12 5v14" /></svg></summary><p>В PRO+ российские сайты — Госуслуги, банки, Яндекс, VK, маркетплейсы — открываются напрямую, без VPN. Многие из них не работают с иностранного IP. Переключатель «Российские сайты напрямую» есть в приложениях CokeVPN.</p></details>
           <details><summary>Сколько устройств?<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="M12 5v14" /></svg></summary><p>Один ключ на 3 устройства. Если ключ раздают десяткам людей, мы его блокируем.</p></details>
           <details><summary>Не подключается, что делать?<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="M12 5v14" /></svg></summary><p>Обновите приложение и вставьте ключ заново. Не помогло, напишите в поддержку в боте.</p></details>
         </div>
